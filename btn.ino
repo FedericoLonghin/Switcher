@@ -8,6 +8,7 @@ int getButtonPressed()
 
   for (int i = 0; i < 16; i++)
   {
+
     if (digitalRead(BTNDATA))
     {
       switch (i)
@@ -62,7 +63,6 @@ int getButtonPressed()
         break;
       }
     }
- //   Serial.print(digitalRead(BTNDATA), BIN);
 
     digitalWrite(BTNCLOCK, LOW);
     delay(1);
@@ -71,15 +71,124 @@ int getButtonPressed()
   }
   Serial.print("\n");
 
-        return -1;
+  return -1;
 }
 
-
-void checkButton() {
-
-int btnPressed=getButtonPressed();
-if(btnPressed>0 &&btnPressed<13 ){
-prew=btnPressed-1;
+void getAllButtonPressed()
+{
+  for(int e=0;e<16;e++){
+    btnState[e]=(char)0;
+   
 }
+  digitalWrite(BTNLOAD, HIGH);
+  delay(1);
+  digitalWrite(BTNLOAD, LOW);
+  delay(1);
+  digitalWrite(BTNLOAD, HIGH);
 
+  for (int i = 0; i < 16; i++)
+  {
+
+    // Serial.print(digitalRead(BTNDATA));
+    if (digitalRead(BTNDATA))
+    {
+      switch (i)
+      {
+      case 0:
+        btnState[4] = 1;
+        break;
+      case 1:
+        btnState[5] = 1;
+        break;
+      case 2:
+        btnState[6] = 1;
+        break;
+      case 3:
+        btnState[7] = 1;
+        break;
+      case 4:
+        btnState[3] = 1;
+        break;
+      case 5:
+        btnState[2] = 1;
+        break;
+      case 6:
+        btnState[1] = 1;
+        break;
+      case 7:
+        btnState[0] = 1;
+        break;
+      case 8:
+        btnState[12] = 1;
+        break;
+      case 9:
+        btnState[13] = 1;
+        break;
+      case 10:
+        btnState[14] = 1;
+        break;
+      case 11:
+        btnState[15] = 1;
+        break;
+      case 12:
+        btnState[11] = 1;
+        break;
+      case 13:
+        btnState[10] = 1;
+        break;
+      case 14:
+        btnState[9] = 1;
+        break;
+      case 15:
+        btnState[8] = 1;
+        break;
+      }
+    }
+    digitalWrite(BTNCLOCK, LOW);
+    delay(1);
+    digitalWrite(BTNCLOCK, HIGH);
+    delay(1);
+  }
+}
+void checkButton()
+{
+
+  int btnPressed = getButtonPressed();
+  if (btnPressed != -1)
+  {
+    switch (btnPressed)
+    {
+    case 0:
+      if (page + 1 >= nPAGE)
+        page = 0;
+      else
+        page++;
+      break;
+    case 1 ... 12:
+      prew = btnPressed - 1;
+      break;
+    case 13 ... 15:
+      int temp = prew;
+      prew = prog;
+      prog = temp;
+
+      break;
+    }
+    while (getButtonPressed() != -1)
+    {
+      getAllButtonPressed();
+
+      for (int i = 0; i < 16; i++)
+      {
+        Serial.print(btnState[i]);
+      }
+
+
+      if (btnState[13]&&btnState[15])
+      {
+        mod = settings;
+        Serial.print("mona");
+      }
+    }
+  }
 }
