@@ -76,10 +76,10 @@ int getButtonPressed()
 
 void getAllButtonPressed()
 {
-  for(int e=0;e<16;e++){
-    btnState[e]=(char)0;
-   
-}
+  for (int e = 0; e < 16; e++)
+  {
+    btnState[e] = (char)0;
+  }
   digitalWrite(BTNLOAD, HIGH);
   delay(1);
   digitalWrite(BTNLOAD, LOW);
@@ -153,26 +153,36 @@ void getAllButtonPressed()
 void checkButton()
 {
 
-   btnPressed = getButtonPressed();
+  btnPressed = getButtonPressed();
   if (btnPressed != -1)
   {
     switch (btnPressed)
     {
-    case 0:
+    case 0:                       //SHIFT KEY
       if (page + 1 >= nPAGE)
         page = 0;
       else
         page++;
       break;
-    case 1 ... 12:
-      prew = btnPressed - 1;
+
+
+    case 1 ... 12:                //NUMBER KEY
+      if (btnMode[btnPressed])
+      {
+        prew = btnPressed;
+      }
+      digit(0);
       break;
-    case 13 ... 15:
+
+
+    case 13 ... 15:               //SET KEY
       int temp = prew;
       prew = prog;
       prog = temp;
 
+      digit(0);
       break;
+
     }
     while (getButtonPressed() != -1)
     {
@@ -183,18 +193,19 @@ void checkButton()
         Serial.print(btnState[i]);
       }
 
-
-      if (btnState[13]&&btnState[15])
+      if (btnState[13] && btnState[15])
       {
         mod = settings;
-        Serial.print("mona");
+
       }
     }
   }
 }
 
-void loadButtonMode(){
-  for(int i=0;i<12;i++){
-    btnMode[i]=EEPROM.read(i);
+void loadButtonMode()
+{
+  for (int i = 0; i < 12; i++)
+  {
+    btnMode[i] = EEPROM.read(i);
   }
 }

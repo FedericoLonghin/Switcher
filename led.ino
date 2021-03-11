@@ -23,10 +23,10 @@ for(int e=0;e<16;e++){
    
 }
 led1=led2=0;
-    ledState[prog] = 1;
+    ledState[prog-1] = 1;
    
 
-        ledState[prew] = millis() % 1000 > 500;
+        ledState[prew-1] = millis() % 1000 > 500;
 
 
     for (int i = 0; i < 8; i++)
