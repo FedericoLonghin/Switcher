@@ -153,7 +153,7 @@ void getAllButtonPressed()
 void checkButton()
 {
 
-  int btnPressed = getButtonPressed();
+   btnPressed = getButtonPressed();
   if (btnPressed != -1)
   {
     switch (btnPressed)
@@ -190,5 +190,11 @@ void checkButton()
         Serial.print("mona");
       }
     }
+  }
+}
+
+void loadButtonMode(){
+  for(int i=0;i<12;i++){
+    btnMode[i]=EEPROM.read(i);
   }
 }

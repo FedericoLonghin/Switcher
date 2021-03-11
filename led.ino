@@ -2,9 +2,16 @@ void updateLed()
 {
     createByte();
     digitalWrite(LEDLATCH, 0);
-    delay(1);
     shiftOut(LEDDATA, LEDCLOCK, MSBFIRST, led1);
     shiftOut(LEDDATA, LEDCLOCK, MSBFIRST, led2);
+    digitalWrite(LEDLATCH, 1);
+}
+
+void clearLed(){
+ digitalWrite(LEDLATCH, 0);
+
+    shiftOut(LEDDATA, LEDCLOCK, MSBFIRST, 0x00);
+    shiftOut(LEDDATA, LEDCLOCK, MSBFIRST, 0x00);
     digitalWrite(LEDLATCH, 1);
 }
 
