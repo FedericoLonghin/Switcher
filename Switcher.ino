@@ -1,8 +1,6 @@
 
 
-#include <LiquidCrystal.h>
 #include "settings.h"
-#include <EEPROM.h>
 void setup()
 {
   EEPROM.begin();
