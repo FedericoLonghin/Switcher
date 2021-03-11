@@ -171,7 +171,7 @@ void checkButton()
       {
         prew = btnPressed;
       }
-      digit(0);
+      digit(btnPressed);
       break;
 
 
@@ -180,7 +180,7 @@ void checkButton()
       prew = prog;
       prog = temp;
 
-      digit(0);
+      digit(btnPressed);
       break;
 
     }

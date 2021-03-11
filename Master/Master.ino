@@ -15,10 +15,13 @@ void setup()
 
   lcd.begin(16, 2);
   loadButtonMode();
+  Wire.begin();
 }
+byte x = 0;
 
 void loop()
 {
+
   switch (mod)
   {
   case normal:
