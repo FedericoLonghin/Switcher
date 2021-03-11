@@ -40,7 +40,7 @@ void loop()
       btnPressed = getButtonPressed();
       if (btnPressed > 0 && btnPressed < 13)
       {
-        num = btnPressed - 1;
+        num = btnPressed;
         lcd.clear();
         lcd.setCursor(0, 0);
         lcd.print("btn N.: ");
