@@ -167,7 +167,7 @@ void checkButton()
 
 
     case 1 ... 12:                //NUMBER KEY
-      if (btnMode[btnPressed])
+      if (btnMode[btnPressed]!=1)
       {
         prew = btnPressed;
       }
@@ -181,6 +181,7 @@ void checkButton()
       prog = temp;
 
       digit(btnPressed);
+      if(btnMode[prog]== video)videoStartTime=millis();
       break;
 
     }

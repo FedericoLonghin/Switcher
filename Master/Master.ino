@@ -17,7 +17,6 @@ void setup()
   loadButtonMode();
   Wire.begin();
 }
-byte x = 0;
 
 void loop()
 {
@@ -47,13 +46,14 @@ void loop()
         lcd.print(num);
         lcd.setCursor(0, 1);
         lcd.print("mod: ");
-        lcd.print(btnMode[num] ? "normale " : "speciale");
+        lcd.print(getButtonMode(btnMode[num] ));
       }
       if (btnPressed == 14)
       {
-        btnMode[num] = !btnMode[num];
+        btnMode[num] ++;
+        if(btnMode[num]>=3)btnMode[num] =0;
         lcd.setCursor(5, 1);
-        lcd.print(btnMode[num] ? "normale " : "speciale");
+        lcd.print(getButtonMode(btnMode[num] ));
         EEPROM.write(num, btnMode[num]);
         while (getButtonPressed() == 14)
         {
