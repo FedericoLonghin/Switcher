@@ -70,7 +70,6 @@ int getButtonPressed()
     delay(1);
   }
 
-
   return -1;
 }
 
@@ -186,7 +185,6 @@ void checkButton()
     while (getButtonPressed() != -1)
     {
       getAllButtonPressed();
-
 
       if (btnState[13] && btnState[15])
       {

@@ -16,7 +16,7 @@ void display()
 
             for (int i = 0; i < nBars; i++)
             {
-                lcd.print("O");
+                lcd.write(byte(0));
             }
         }
         else

@@ -1,5 +1,3 @@
-
-
 #include "settings.h"
 void setup()
 {
@@ -14,9 +12,11 @@ void setup()
   Serial.begin(115200);
 
   lcd.begin(16, 2);
+     lcd.createChar(0, fillChar);
   loadButtonMode();
   loadVideoDurations();
   Wire.begin();
+
 }
 
 void loop()

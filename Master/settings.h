@@ -37,3 +37,14 @@ int num;
 
 unsigned long int videoStartTime;
 int nBars;
+
+byte fillChar[] = {
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B11111,
+  B11111
+};
