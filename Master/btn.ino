@@ -69,7 +69,7 @@ int getButtonPressed()
     digitalWrite(BTNCLOCK, HIGH);
     delay(1);
   }
-  Serial.print("\n");
+
 
   return -1;
 }
@@ -158,55 +158,40 @@ void checkButton()
   {
     switch (btnPressed)
     {
-    case 0:                       //SHIFT KEY
+    case 0: //SHIFT KEY
       if (page + 1 >= nPAGE)
         page = 0;
       else
         page++;
       break;
 
-
-    case 1 ... 12:                //NUMBER KEY
-      if (btnMode[btnPressed]!=1)
+    case 1 ... 12: //NUMBER KEY
+      if (btnMode[btnPressed] != 1)
       {
         prew = btnPressed;
       }
       digit(btnPressed);
       break;
 
-
-    case 13 ... 15:               //SET KEY
+    case 13 ... 15: //SET KEY
       int temp = prew;
       prew = prog;
       prog = temp;
 
       digit(btnPressed);
-      if(btnMode[prog]== video)videoStartTime=millis();
+      if (btnMode[prog] == video)
+        videoStartTime = millis();
       break;
-
     }
     while (getButtonPressed() != -1)
     {
       getAllButtonPressed();
 
-      for (int i = 0; i < 16; i++)
-      {
-        Serial.print(btnState[i]);
-      }
 
       if (btnState[13] && btnState[15])
       {
         mod = settings;
-
       }
     }
-  }
-}
-
-void loadButtonMode()
-{
-  for (int i = 0; i < 12; i++)
-  {
-    btnMode[i] = EEPROM.read(i);
   }
 }

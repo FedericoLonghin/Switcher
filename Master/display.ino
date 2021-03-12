@@ -4,11 +4,14 @@ void display()
     if (btnMode[prog] == video)
     {
         lcd.setCursor(0, 0);
-        lcd.print("Video   Prew: ");
+        lcd.print(videoduration[prog]);
+        lcd.print(" sec.");
+        lcd.setCursor(8, 0);
+        lcd.print("Prew: ");
         lcd.print(prew);
         lcd.setCursor(0, 1);
         nBars = ((millis() - videoStartTime) / videoduration[prog]) * 0.016;
-        if (nBars <= videoduration[prog])
+        if (nBars <= 16)
         {
 
             for (int i = 0; i < nBars; i++)
@@ -41,13 +44,13 @@ String getButtonMode(byte mode)
     switch (mode)
     {
     case 0:
-        return "normale ";
+        return "normale     ";
         break;
     case 1:
-        return "Speciale";
+        return "Speciale    ";
         break;
     case 2:
-        return "video   ";
+        return "video       ";
         break;
     }
 }
