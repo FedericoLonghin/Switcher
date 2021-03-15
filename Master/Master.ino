@@ -12,11 +12,9 @@ void setup()
   Serial.begin(115200);
 
   lcd.begin(16, 2);
-     lcd.createChar(0, fillChar);
-  loadButtonMode();
-  loadVideoDurations();
+  lcd.createChar(0, fillChar);
+  loadInfo();
   Wire.begin();
-
 }
 
 void loop()
@@ -33,8 +31,27 @@ void loop()
     lcd.clear();
     clearLed();
     lcd.setCursor(0, 0);
-    lcd.print("Settings");
+    lcd.print("autoSwitch:");
+    lcd.print(autoSwitch);
+    btnPressed=getButtonPressed();
+    while (btnPressed==-1||btnPressed>12)
+    {
+    btnPressed=getButtonPressed();
+              Serial.print(btnPressed);
+
+      if (btnPressed==14)
+      {
+        Serial.print("b");
+
+        autoSwitch = !autoSwitch;
+        lcd.setCursor(11, 0);
+        lcd.print(autoSwitch);
+        while (getButtonPressed() == 14){}
+          
+      }
+    }
     num = 0;
+
     while (btnPressed != 0)
     {
 
@@ -70,7 +87,7 @@ void loop()
           lcd.print(" ");
       }
 
-      if (btnPressed == 14)
+      if (btnPressed == 14 && num != 0)
       {
         btnMode[num]++;
         if (btnMode[num] >= 3)
@@ -82,8 +99,8 @@ void loop()
         }
       }
     }
-    unloadButtonMode();
-    unloadVideoDurations();
+
+    unloadInfo();
     mod = normal;
     break;
   }

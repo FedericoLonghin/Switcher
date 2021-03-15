@@ -158,7 +158,6 @@ void checkButton()
     switch (btnPressed)
     {
     case 0: //SHIFT KEY
-    HaveIToSwitch=1;
       if (page + 1 >= nPAGE)
         page = 0;
       else
@@ -174,6 +173,7 @@ void checkButton()
       break;
 
     case 13 ... 15: //SET KEY
+    if(btnMode[prew]== video)HaveIToSwitch=1;
     switchscene(btnPressed);
 
 
