@@ -158,6 +158,7 @@ void checkButton()
     switch (btnPressed)
     {
     case 0: //SHIFT KEY
+    HaveIToSwitch=1;
       if (page + 1 >= nPAGE)
         page = 0;
       else
@@ -173,11 +174,10 @@ void checkButton()
       break;
 
     case 13 ... 15: //SET KEY
-      int temp = prew;
-      prew = prog;
-      prog = temp;
+    switchscene(btnPressed);
 
-      digit(btnPressed);
+
+     
       if (btnMode[prog] == video)
         videoStartTime = millis();
       break;

@@ -22,6 +22,12 @@ void display()
         else
         {
             lcd.print("outOfTime");
+            if (autoSwitch && HaveIToSwitch)
+            {
+                switchscene(14);
+                HaveIToSwitch = false;
+                Serial.println("switching");
+            }
         }
     }
     else

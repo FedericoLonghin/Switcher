@@ -48,3 +48,5 @@ byte fillChar[] = {
   B11111,
   B11111
 };
+bool autoSwitch=true, HaveIToSwitch=true;
+
