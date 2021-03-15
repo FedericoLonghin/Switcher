@@ -6,8 +6,9 @@ void display()
         lcd.setCursor(0, 0);
         lcd.print(videoduration[prog]);
         lcd.print(" sec.");
+        
         lcd.setCursor(8, 0);
-        lcd.print("Prew: ");
+        lcd.print(autoSwitch?"Auto: ":"Prew ");
         lcd.print(prew);
         lcd.setCursor(0, 1);
         nBars = ((millis() - videoStartTime) / videoduration[prog]) * 0.016;
