@@ -8,8 +8,8 @@ int getButtonPressed()
 
   for (int i = 0; i < 16; i++)
   {
-
-    if (digitalRead(BTNDATA))
+if(i==7)page=digitalRead(BTNDATA);
+    else if (digitalRead(BTNDATA))
     {
       switch (i)
       {
@@ -34,9 +34,7 @@ int getButtonPressed()
       case 6:
         return 1;
         break;
-      case 7:
-        return 0;
-        break;
+
       case 8:
         return 12;
         break;
@@ -157,19 +155,15 @@ void checkButton()
   {
     switch (btnPressed)
     {
-    case 0: //SHIFT KEY
-      if (page + 1 >= nPAGE)
-        page = 0;
-      else
-        page++;
-      break;
+ 
 
     case 1 ... 12: //NUMBER KEY
+Serial.println(page);
       if (btnMode[btnPressed] != 1)
       {
         prew = btnPressed;
       }
-      digit(btnPressed);
+      digit(page? btnPressed+20 :btnPressed);
       break;
 
     case 13 ... 15: //SET KEY

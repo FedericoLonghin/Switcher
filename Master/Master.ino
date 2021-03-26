@@ -41,7 +41,6 @@ void loop()
 
       if (btnPressed==14)
       {
-        Serial.print("b");
 
         autoSwitch = !autoSwitch;
         lcd.setCursor(11, 0);
@@ -52,7 +51,7 @@ void loop()
     }
     num = 0;
 
-    while (btnPressed != 0)
+    while (!page)
     {
 
       btnPressed = getButtonPressed();
