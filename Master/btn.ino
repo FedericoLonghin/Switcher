@@ -8,7 +8,8 @@ int getButtonPressed()
 
   for (int i = 0; i < 16; i++)
   {
-if(i==7)page=digitalRead(BTNDATA);
+    if (i == 7)
+      page = digitalRead(BTNDATA);
     else if (digitalRead(BTNDATA))
     {
       switch (i)
@@ -155,23 +156,23 @@ void checkButton()
   {
     switch (btnPressed)
     {
- 
+
+
 
     case 1 ... 12: //NUMBER KEY
-Serial.println(page);
-      if (btnMode[btnPressed] != 1)
+
+      if (btnMode[btnPressed] != 1 && !page)
       {
         prew = btnPressed;
       }
-      digit(page? btnPressed+20 :btnPressed);
+      digit(page ? btnPressed + 20 : btnPressed);
       break;
 
     case 13 ... 15: //SET KEY
-    if(btnMode[prew]== video)HaveIToSwitch=1;
-    switchscene(btnPressed);
+      if (btnMode[prew] == video)
+        HaveIToSwitch = 1;
+      switchscene(btnPressed);
 
-
-     
       if (btnMode[prog] == video)
         videoStartTime = millis();
       break;

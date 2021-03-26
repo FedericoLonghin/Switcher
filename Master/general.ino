@@ -3,14 +3,14 @@
 void loadButtonMode()
 {
 
-    for (int i = 1; i < 13; i++)
+    for (int i = 1; i < 33; i++)
     {
         btnMode[i] = EEPROM.read(i);
     }
 }
 void loadVideoDurations()
 {
-    for (int i = 1; i < 13; i++)
+    for (int i = 1; i < 33; i++)
     {
         videoduration[i] = EEPROM.read(i + 100);
     }
@@ -18,14 +18,14 @@ void loadVideoDurations()
 
 void unloadButtonMode()
 {
-    for (int i = 1; i < 13; i++)
+    for (int i = 1; i < 33; i++)
     {
         EEPROM.write(i, btnMode[i]);
     }
 }
 void unloadVideoDurations()
 {
-    for (int i = 1; i < 13; i++)
+    for (int i = 1; i < 33; i++)
     {
         EEPROM.write(i + 100, videoduration[i]);
     }
